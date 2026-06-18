@@ -4,8 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thomas Kiran | Product Designer</title>
-  <link rel="stylesheet" href="styles.css"/>
+
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #111;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 60px;
+      position: sticky;
+      top: 0;
+      background: white;
+    }
+
+    .nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #555;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 120px 60px;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #666;
+    }
+
+    /* WORK */
+    .work {
+      padding: 80px 60px;
+    }
+
+    .work h2 {
+      margin-bottom: 40px;
+    }
+
+    .project {
+      margin-bottom: 50px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .project h3 {
+      font-size: 24px;
+    }
+
+    .project p {
+      color: #666;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    /* ABOUT */
+    .about {
+      padding: 80px 60px;
+      max-width: 700px;
+    }
+
+    /* CONTACT */
+    .contact {
+      padding: 80px 60px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px;
+      text-align: center;
+      color: #888;
+    }
+
+    /* MOBILE */
+    @media(max-width: 768px) {
+      .nav, .hero, .work, .about, .contact {
+        padding: 20px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -66,7 +173,23 @@
   <p>© 2026 Thomas Kiran</p>
 </footer>
 
-<script src="script.js"></script>
+<!-- JS -->
+<script>
+  const projects = document.querySelectorAll(".project");
+
+  const reveal = () => {
+    projects.forEach(project => {
+      const top = project.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        project.style.opacity = 1;
+        project.style.transform = "translateY(0)";
+      }
+    });
+  };
+
+  window.addEventListener("scroll", reveal);
+  window.addEventListener("load", reveal);
+</script>
 
 </body>
 </html>
